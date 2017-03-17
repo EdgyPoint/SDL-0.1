@@ -1,2 +1,12 @@
-﻿  SDL Game.vcxproj -> C:\Users\Kistofe\Documents\GitHub\SDL-Game-3\Debug\SDL3 Handout.exe
-  SDL Game.vcxproj -> C:\Users\Kistofe\Documents\GitHub\SDL-Game-3\Debug\SDL3 Handout.pdb (Full PDB)
+﻿  ModuleRender.cpp
+  Generating Code...
+  Compiling...
+  ModuleWindow.cpp
+  ModuleTextures.cpp
+d:\disk c\documents\github\sdl-0.1\moduletextures.cpp(45): warning C4018: '<=': signed/unsigned mismatch
+  ModuleInput.cpp
+  Main.cpp
+  Application.cpp
+  Generating Code...
+  SDL Game.vcxproj -> D:\Disk C\Documents\GitHub\SDL-0.1\Debug\SDL3 Handout.exe
+  SDL Game.vcxproj -> D:\Disk C\Documents\GitHub\SDL-0.1\Debug\SDL3 Handout.pdb (Full PDB)

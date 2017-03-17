@@ -32,7 +32,10 @@ bool ModuleRender::Init()
 		ret = false;
 	}
 
-	App->render->tex = App->textures->Load("test.png");// TODO 9: load a texture "test.png" to test is everything works well
+	App->render->tex = App->textures->Load("Ruins Background.png");// TODO 9: load a texture "test.png" to test is everything works well
+	App->render->tex = App->textures->Load("Ruins Background.png");
+	
+	
 
 	return ret;
 }
@@ -43,7 +46,13 @@ update_status ModuleRender::PreUpdate()
 	// TODO 7: Clear the screen to black before starting every frame
 	SDL_RenderClear(App->render->renderer);
 	
-	App->render->Blit(App->render->tex, 100, 100, NULL);  
+	SDL_Rect backgroundsource;
+	backgroundsource.x = 0;
+	backgroundsource.y = 0;
+	backgroundsource.h = BACKGROUND_HEIGHT;
+	backgroundsource.w = BACKGROUND_WIDTH;
+
+	App->render->Blit(App->render->tex, 0, 0, &backgroundsource);  
 	// TODO 10: Blit our test texture to check functionality
 
 	return update_status::UPDATE_CONTINUE;
