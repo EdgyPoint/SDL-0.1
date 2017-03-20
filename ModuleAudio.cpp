@@ -2,65 +2,54 @@
 #include "Application.h"
 #include "ModuleAudio.h"
 
-#include "SDL/include/SDL.h"
-#include "SDL_mixer\include\SDL_mixer.h"
-
-ModuleAudio::ModuleAudio()
+ModuleAudio::ModuleAudio() : Module()
 {
-	for (int i = 0; i < MAX_AUDIO; i++) { audio[i] = nullptr; }
+
 }
 
 ModuleAudio::~ModuleAudio()
-{}
+{
+
+}
 
 bool ModuleAudio::Init()
 {
-	LOG("Init Audiolibrary");
-	bool ret = true;
-
-	int flags = MIX_INIT_OGG;
-	int init = Mix_Init(flags);
-
-	if ((init & flags) != flags)
+	if (Mix_Init(MIX_INIT_OGG) == 0)
 	{
-		LOG("Could not initialize Audio lib. Mix_Init: %s", Mix_GetError());
-		ret = false;
+		LOG("An error has ocurred while initializing the audio: %s", SDL_GetError())
+			return false;
 	}
 
-	return ret;
-}
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
+	{
+		LOG("An error has ocurred while opening the audio has ocurred: %s", SDL_GetError())
+	}
 
-bool ModuleAudio::CleanUp()
-{
-	LOG("Freeing audio");
+	ModuleAudio::Load("music.ogg");
 
-	for (int i = 0; i <= last_track; i++) {Mix_FreeMusic (audio[i]); }
-
-	//Mix_FreeMusic();//Free mixer
-	Mix_Quit();
+		if (Mix_PlayMusic(audio[last], -1) == -1)
+		{
+			LOG("An error has ocurred while reproducing the audio %s", SDL_GetError())
+		}
+	
 	return true;
 }
 
 Mix_Music* const ModuleAudio::Load(const char* path)
 {
-	Mix_Music* test_audio = Mix_LoadMUS(path);
-	if (test_audio == nullptr)
+
+	audio[last] = Mix_LoadMUS(path);
+	if (audio[last] == NULL)
 	{
-		LOG("Failed to load audio track at %s", path);
-	}
-	else
-	{
-		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-		Mix_PlayMusic(App->audio->audio[last_track], -1);
+		LOG("An error has ocurred when loading the sound: %s", SDL_GetError())
 	}
 
-	audio[last_track++] = test_audio;
-	if (last_track >= MAX_AUDIO)
-	{
-		LOG("Audio overflow");
-		last_track = 0;
-	}
-
-	return test_audio;
+	return audio[last];
 }
+bool ModuleAudio::CleanUp()
+{
+	Mix_CloseAudio();
+	Mix_FreeMusic(audio[last]);
 
+	return true;
+}

@@ -1,9 +1,2 @@
-﻿  ModuleRender.cpp
-  Generando código...
-  Compilando...
-  ModuleTextures.cpp
-c:\users\kistofe\documents\github\sdl-0.1\moduletextures.cpp(45): warning C4018: '<=': no coinciden signed/unsigned
-  Application.cpp
-  Generando código...
-  SDL Game.vcxproj -> C:\Users\Kistofe\Documents\GitHub\SDL-0.1\Debug\SDL3 Handout.exe
-  SDL Game.vcxproj -> C:\Users\Kistofe\Documents\GitHub\SDL-0.1\Debug\SDL3 Handout.pdb (Full PDB)
+﻿  ModuleAudio.cpp
+  SDL Game.vcxproj -> C:\Users\Jaume\Documents\GitHub\SDL-0.1\Debug\SDL3 Handout.exe
