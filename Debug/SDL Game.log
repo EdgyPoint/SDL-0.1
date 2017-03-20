@@ -1,2 +1,4 @@
-﻿  SDL Game.vcxproj -> C:\Users\Kistofe\Documents\GitHub\SDL-0.1\Debug\SDL3 Handout.exe
+﻿  ModuleAudio.cpp
+c:\users\kistofe\documents\github\sdl-0.1\moduleaudio.cpp(40): warning C4018: '<=': no coinciden signed/unsigned
+  SDL Game.vcxproj -> C:\Users\Kistofe\Documents\GitHub\SDL-0.1\Debug\SDL3 Handout.exe
   SDL Game.vcxproj -> C:\Users\Kistofe\Documents\GitHub\SDL-0.1\Debug\SDL3 Handout.pdb (Full PDB)
