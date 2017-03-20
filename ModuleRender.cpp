@@ -34,8 +34,7 @@ bool ModuleRender::Init()
 
 	App->render->tex = App->textures->Load("Ruins Background.png");// TODO 9: load a texture "test.png" to test is everything works well
 	App->render->tex = App->textures->Load("Ruins Background.png");
-	
-	
+	App->render->aud = App->audio->Load("Gunbird OST Trump A.ogg");
 
 	return ret;
 }

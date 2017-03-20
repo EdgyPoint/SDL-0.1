@@ -9,7 +9,6 @@
 #define MAX_AUDIO 50
 
 
-
 class ModuleAudio : public Module
 
 {
@@ -21,6 +20,9 @@ public:
 
 	bool Init();
 	bool CleanUp();
+
+	Mix_Music* const Load(const char* path);
+
 
 	Mix_Music* audio[MAX_AUDIO];
 	uint last_track = 0;
