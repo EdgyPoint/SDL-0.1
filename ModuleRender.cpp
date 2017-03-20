@@ -33,8 +33,6 @@ bool ModuleRender::Init()
 	}
 
 	App->render->tex = App->textures->Load("Ruins Background.png");// TODO 9: load a texture "test.png" to test is everything works well
-	App->render->tex = App->textures->Load("Ruins Background.png");
-
 
 	return ret;
 }
@@ -83,7 +81,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 	bool ret = true;
 	SDL_Rect rect;
 	rect.x = x;
-	rect.y = y;
+	rect.y = App->render->yscroll;
 
 	if(section != nullptr)
 	{
