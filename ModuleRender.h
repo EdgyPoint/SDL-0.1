@@ -27,6 +27,7 @@ public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Texture* tex;
 	Mix_Music* aud;
+	int yscroll = -1654;
 };
 
 #endif //__ModuleRenderer_H__

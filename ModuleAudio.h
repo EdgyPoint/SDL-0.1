@@ -1,32 +1,30 @@
-#ifndef _ModuleAudio_H
-#define _ModuleAudio_H
+
+#ifndef __ModuleAudio_H__
+#define __ModuleAudio_H__
 
 #include "Module.h"
 #include "Globals.h"
 
 #include "SDL_mixer\include\SDL_mixer.h"
+#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-#define MAX_AUDIO 50
-
+#define MAX_SONGS 3
+typedef unsigned char Uint8;
 
 class ModuleAudio : public Module
-
 {
-
 public:
 
 	ModuleAudio();
 	~ModuleAudio();
 
 	bool Init();
+	Mix_Music* const Load(const char* path);
 	bool CleanUp();
 
-	Mix_Music* const Load(const char* path);
-
-
-	Mix_Music* audio[MAX_AUDIO];
-	uint last_track = 0;
-
+public:
+	Mix_Music* audio[MAX_SONGS];
+	uint last = 0;
 };
 
-#endif
+#endif // __ModuleAudio_H__
