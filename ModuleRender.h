@@ -4,11 +4,11 @@
 #include "Module.h"
 #include "SDL_mixer\include\SDL_mixer.h"
 #include "ModuleAudio.h"
-#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
 struct SDL_Renderer;
 struct SDL_Texture;
 struct SDL_Rect;
+
 
 class ModuleRender : public Module
 {
@@ -26,6 +26,7 @@ public:
 public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Texture* tex;
+	Mix_Music* aud;
 };
 
 #endif //__ModuleRenderer_H__
