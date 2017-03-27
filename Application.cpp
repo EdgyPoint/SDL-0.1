@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
+#include "ModuleFadetoBlack.h"
 
 #include "ModuleIntro.h"
 
@@ -15,7 +16,11 @@ Application::Application()
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = audio = new ModuleAudio();
 
-	modules[5] = intro = new ModuleIntro();
+
+	modules[6] = intro = new ModuleIntro();
+
+	modules[5] = fading = new ModuleFadeToBlack();
+
 }	
 
 Application::~Application()

@@ -38,7 +38,11 @@
     <ClInclude Include="ModuleAudio.h">
       <Filter>Modules</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="ModuleIntro.h">
+=======
+    <ClInclude Include="ModuleFadetoBlack.h">
+>>>>>>> origin/master
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -67,7 +71,11 @@
     <ClCompile Include="ModuleAudio.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="ModuleIntro.cpp">
+=======
+    <ClCompile Include="ModuleFadetoBlack.cpp">
+>>>>>>> origin/master
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

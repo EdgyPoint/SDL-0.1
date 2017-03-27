@@ -3,6 +3,7 @@
 
 class Module
 {
+
 private:
 	bool enabled = true;
 
@@ -36,5 +37,7 @@ public:
 		}
 	}
 };
+
+
 
 #endif // __MODULE_H__
