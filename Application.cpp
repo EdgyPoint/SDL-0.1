@@ -33,8 +33,13 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
+	scene_castle->Disable();
+
+	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
+
+	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
 
 	return ret;
 }
