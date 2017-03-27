@@ -11,7 +11,7 @@
 
 ModuleIntro::ModuleIntro() : Module()
 {
-	background = { 0, 0, 224, 320 };
+	background_intro = { 0, 0, 224, 320 };
 }
 
 ModuleIntro::~ModuleIntro()
@@ -46,7 +46,7 @@ update_status ModuleIntro::Update()
 {
 	// Draw everything --------------------------------------	
 	
-	App->render->Blit(graphics, 50, -15, &background, 0.75f); // back of the room
+	App->render->Blit(graphics, 50, -15, &background_intro, 0.75f); // back of the room
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false)
 	{

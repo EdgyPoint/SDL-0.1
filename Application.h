@@ -30,8 +30,6 @@ public:
 	ModuleFadeToBlack* fading;
 	ModuleIntro* intro;
 	ModuleSceneCastle* scene_castle;
-	ModuleFadeToBlack* fading;
-	ModuleIntro* intro;
 
 public:
 

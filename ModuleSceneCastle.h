@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "SDL/include/SDL_rect.h"
 
 struct SDL_Texture;
 
@@ -19,8 +20,7 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
-	SDL_Rect background2;
-	SDL_Rect background;
+	SDL_Rect background_castle;
 	bool fading = false;
 };
 

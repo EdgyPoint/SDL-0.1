@@ -11,8 +11,7 @@
 ModuleSceneCastle::ModuleSceneCastle()
 {
 	// Background / sky
-	background = { 0, 0, 456, 4216 };
-	background2 = { 0, 0, 456, 4216 };
+	background_castle = { 0, 0, 456, 4216 };
 }
 ModuleSceneCastle:: ~ModuleSceneCastle()
 {}
@@ -43,8 +42,7 @@ update_status ModuleSceneCastle::Update()
 {
 	// Draw everything --------------------------------------	
 
-	App->render->Blit(graphics, 50, -15, &background, 0.75f); // back of the room
-	App->render->Blit(graphics, 50, -15, &background, 0.75f); // back of the room
+	App->render->Blit(graphics, 50, -15, &background_castle, 0.75f); // back of the room
 
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false)
