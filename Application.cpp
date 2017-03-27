@@ -11,15 +11,13 @@
 Application::Application()
 {
 	modules[0] = window = new ModuleWindow();
-	modules[1] = render = new ModuleRender();
-	modules[2] = input = new ModuleInput();
+	modules[1] = input = new ModuleInput();
+	modules[2] = render = new ModuleRender();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = audio = new ModuleAudio();
-
-
+	modules[5] = fading = new ModuleFadeToBlack();
 	modules[6] = intro = new ModuleIntro();
 
-	modules[5] = fading = new ModuleFadeToBlack();
 
 }	
 

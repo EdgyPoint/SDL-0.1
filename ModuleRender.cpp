@@ -1,8 +1,8 @@
 #include "Globals.h"
 #include "Application.h"
+#include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
-#include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
@@ -115,4 +115,3 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 
 	return ret;
 }
-z

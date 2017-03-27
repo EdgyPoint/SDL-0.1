@@ -5,6 +5,7 @@
 
 #define NUM_MODULES 7
 
+class ModuleIntro;
 class ModuleFadeToBlack;
 class ModuleAudio;
 class ModuleWindow;
@@ -24,7 +25,6 @@ public:
 	ModuleTextures* textures;
 	ModuleAudio* audio;
 	ModuleFadeToBlack* fading;
-
 	ModuleIntro* intro;
 
 
