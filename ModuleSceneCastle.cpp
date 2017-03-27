@@ -11,7 +11,7 @@
 ModuleSceneCastle::ModuleSceneCastle()
 {
 	// Background / sky
-	background_castle = { 0, 0, 456, 4216 };
+	background_castle = { 0, 0, 228, 2108 };
 }
 ModuleSceneCastle:: ~ModuleSceneCastle()
 {}
@@ -30,7 +30,7 @@ bool ModuleSceneCastle::Start()
 bool ModuleSceneCastle::CleanUp()
 {
 	// TODO 5: Remove all memory leaks
-	LOG("Unloading honda stage");
+	LOG("Unloading castle stage");
 
 	fading = false;
 
@@ -42,7 +42,7 @@ update_status ModuleSceneCastle::Update()
 {
 	// Draw everything --------------------------------------	
 
-	App->render->Blit(graphics, 50, -15, &background_castle, 0.75f); // back of the room
+	App->render->Blit(graphics, 0, -1788, &background_castle, 0.75f); // back of the room
 
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false)

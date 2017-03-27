@@ -24,8 +24,6 @@ bool ModuleIntro::Start()
 
 	graphics = App->textures->Load("game ober.png");
 
-	
-
 	return true;
 }
 
@@ -46,7 +44,7 @@ update_status ModuleIntro::Update()
 {
 	// Draw everything --------------------------------------	
 	
-	App->render->Blit(graphics, 50, -15, &background_intro, 0.75f); // back of the room
+	App->render->Blit(graphics, 0, 0, &background_intro, 0.75f); // back of the room
 
  	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false)
 	{
