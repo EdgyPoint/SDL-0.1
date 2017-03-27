@@ -39,9 +39,13 @@
       <Filter>Modules</Filter>
     </ClInclude>
 <<<<<<< HEAD
+    <ClInclude Include="ModuleSceneCastle.h">
+=======
+<<<<<<< HEAD
     <ClInclude Include="ModuleIntro.h">
 =======
     <ClInclude Include="ModuleFadetoBlack.h">
+>>>>>>> origin/master
 >>>>>>> origin/master
       <Filter>Modules</Filter>
     </ClInclude>
@@ -72,9 +76,13 @@
       <Filter>Modules</Filter>
     </ClCompile>
 <<<<<<< HEAD
+    <ClCompile Include="ModuleSceneCastle.cpp">
+=======
+<<<<<<< HEAD
     <ClCompile Include="ModuleIntro.cpp">
 =======
     <ClCompile Include="ModuleFadetoBlack.cpp">
+>>>>>>> origin/master
 >>>>>>> origin/master
       <Filter>Modules</Filter>
     </ClCompile>

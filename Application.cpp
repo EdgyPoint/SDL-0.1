@@ -4,9 +4,11 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
-#include "ModuleFadetoBlack.h"
 
+#include "ModuleFadetoBlack.h"
+#include "ModuleSceneCastle.h"
 #include "ModuleIntro.h"
+
 
 Application::Application()
 {
@@ -17,7 +19,7 @@ Application::Application()
 	modules[4] = audio = new ModuleAudio();
 	modules[5] = fading = new ModuleFadeToBlack();
 	modules[6] = intro = new ModuleIntro();
-
+	modules[7] = scene_castle = new ModuleSceneCastle();
 
 }	
 

@@ -3,9 +3,11 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 7
+#define NUM_MODULES 8
+
 
 class ModuleIntro;
+class ModuleSceneCastle;
 class ModuleFadeToBlack;
 class ModuleAudio;
 class ModuleWindow;
@@ -13,6 +15,7 @@ class ModuleInput;
 class ModuleTextures;
 class ModuleRender;
 class Module;
+class ModuleSceneCastle;
 
 class Application
 {
@@ -26,7 +29,9 @@ public:
 	ModuleAudio* audio;
 	ModuleFadeToBlack* fading;
 	ModuleIntro* intro;
-
+	ModuleSceneCastle* scene_castle;
+	ModuleFadeToBlack* fading;
+	ModuleIntro* intro;
 
 public:
 

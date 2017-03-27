@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleIntro.h"
 #include "ModuleFadetoBlack.h"
+#include "ModuleSceneCastle.h"
 
 // Reference at https://youtu.be/6OlenbCC4WI?t=382
 
@@ -49,7 +50,7 @@ update_status ModuleIntro::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false)
 	{
-		App->fading->FadeToBlack(this, App->intro, 2.0f);
+		App->fading->FadeToBlack(this, App->scene_castle, 2.0f);
 		fading = true;
 	}// TODO 2: make so pressing SPACE the KEN stage is loaded
 
