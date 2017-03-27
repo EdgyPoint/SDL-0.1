@@ -15,7 +15,6 @@ class ModuleInput;
 class ModuleTextures;
 class ModuleRender;
 class Module;
-class ModuleSceneCastle;
 
 class Application
 {

@@ -42,8 +42,9 @@ bool ModuleTextures::CleanUp()
 {
 	LOG("Freeing textures and Image library");
 
-	for (int i = 0; i <= last_texture; i++) { SDL_DestroyTexture(textures[i]); }
-	// TODO 6: Free all textures
+	for (uint i = 0; i < MAX_TEXTURES; ++i)
+		if (textures[i] != nullptr)
+			SDL_DestroyTexture(textures[i]);
 
 	IMG_Quit();
 	return true;
@@ -52,33 +53,60 @@ bool ModuleTextures::CleanUp()
 // Load new texture from file path
 SDL_Texture* const ModuleTextures::Load(const char* path)
 {
-	SDL_Texture* test_texture = nullptr;
-	SDL_Surface* test_image = IMG_Load(path);
-	if (test_image == nullptr)
-	{
-		LOG("Failed to load image at %s", path);
-	}
-	// TODO 2: Load and image from a path (must be a png)
-	// and check for errors
+	SDL_Texture* texture = NULL;
+	SDL_Surface* surface = IMG_Load(path);
 
+	if (surface == NULL)
+	{
+		LOG("Could not load surface with path: %s. IMG_Load: %s", path, IMG_GetError());
+	}
 	else
 	{
-		test_texture = SDL_CreateTextureFromSurface(App->render->renderer, test_image);
+		texture = SDL_CreateTextureFromSurface(App->render->renderer, surface);
 
-		if (test_texture == nullptr) { LOG("Failed to create texture from %s", path); }
+		if (texture == NULL)
+		{
+			LOG("Unable to create texture from surface! SDL Error: %s\n", SDL_GetError());
+		}
+		else
+		{
+			bool room = false;
+			for (int i = 0; i < MAX_TEXTURES; ++i)
+			{
+				if (textures[i] == nullptr)
+				{
+					textures[i] = texture;
+					room = true;
+					break;
+				}
+			}
+			if (room == false)
+				LOG("Texture buffer overflow");
+		}
+
+		SDL_FreeSurface(surface);
 	}
-	// TODO 3: Once your have the SDL_surface*, you need to create
-	// a texture from it to return it (check for errors again)
-	SDL_FreeSurface(test_image);
 
-	textures[last_texture++] = test_texture;
-	if (last_texture >= MAX_TEXTURES)
+	return texture;
+}
+
+bool ModuleTextures::Unload(SDL_Texture * texture)
+{
+	bool ret = false;
+
+	if (texture != nullptr)
 	{
-		LOG("Texture overflow");
-		last_texture = 0;
+		for (int i = 0; i < MAX_TEXTURES; ++i)
+		{
+			if (textures[i] == texture)
+			{
+				textures[i] = nullptr;
+				ret = true;
+				break;
+			}
+		}
+		SDL_DestroyTexture(texture);
 	}
-	// TODO 4: Before leaving, remember to free the surface and
-	// add the texture to our own array so we can properly free them
 
-	return test_texture;
+	return ret;
 }

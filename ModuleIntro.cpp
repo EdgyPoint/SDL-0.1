@@ -21,12 +21,12 @@ ModuleIntro::~ModuleIntro()
 bool ModuleIntro::Start()
 {
 	LOG("Loading background assets");
-	bool ret = true;
+
 	graphics = App->textures->Load("game ober.png");
 
 	
 
-	return ret;
+	return true;
 }
 
 // Load assets
@@ -48,11 +48,11 @@ update_status ModuleIntro::Update()
 	
 	App->render->Blit(graphics, 50, -15, &background_intro, 0.75f); // back of the room
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false)
+ 	if (App->input->keyboard[SDL_SCANCODE_SPACE] && fading == false)
 	{
 		App->fading->FadeToBlack(this, App->scene_castle, 2.0f);
 		fading = true;
-	}// TODO 2: make so pressing SPACE the KEN stage is loaded
+	}
 
 	return UPDATE_CONTINUE;
 }
