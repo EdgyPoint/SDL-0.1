@@ -5,6 +5,8 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 
+#include "ModuleIntro.h"
+
 Application::Application()
 {
 	modules[0] = window = new ModuleWindow();
@@ -12,6 +14,8 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = audio = new ModuleAudio();
+
+	modules[5] = intro = new ModuleIntro();
 }	
 
 Application::~Application()

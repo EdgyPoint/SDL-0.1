@@ -2,11 +2,15 @@
 #include "Application.h"
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
-#include "ModuleTextures.h"
+#include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
-{}
+{
+	camera.x = camera.y = 0;
+	camera.w = SCREEN_WIDTH;
+	camera.h = SCREEN_HEIGHT;
+}
 
 // Destructor
 ModuleRender::~ModuleRender()
@@ -19,47 +23,52 @@ bool ModuleRender::Init()
 	bool ret = true;
 	Uint32 flags = 0;
 
-	if(REN_VSYNC == true)
+	if (REN_VSYNC == true)
 	{
 		flags |= SDL_RENDERER_PRESENTVSYNC;
 	}
 
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
-	
-	if(renderer == NULL)
+
+	if (renderer == NULL)
 	{
 		LOG("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
 
-	App->render->tex = App->textures->Load("Ruins Background.png");// TODO 9: load a texture "test.png" to test is everything works well
-	
 	return ret;
 }
 
 // Called every draw update
 update_status ModuleRender::PreUpdate()
 {
-	// TODO 7: Clear the screen to black before starting every frame
-	SDL_RenderClear(App->render->renderer);
-	
-	SDL_Rect backgroundsource;
-	backgroundsource.x = 0;
-	backgroundsource.y = 0;
-	backgroundsource.h = BACKGROUND_HEIGHT;
-	backgroundsource.w = BACKGROUND_WIDTH;
+	SDL_RenderClear(renderer);
 
-	App->render->Blit(App->render->tex, 0, 0, &backgroundsource);  
-	// TODO 10: Blit our test texture to check functionality
+	return update_status::UPDATE_CONTINUE;
+}
+
+update_status ModuleRender::Update()
+{
+	int speed = 3;
+
+	if (App->input->keyboard[SDL_SCANCODE_UP] == 1)
+		camera.y += speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == 1)
+		camera.y -= speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == 1)
+		camera.x += speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == 1)
+		camera.x -= speed;
 
 	return update_status::UPDATE_CONTINUE;
 }
 
 update_status ModuleRender::PostUpdate()
 {
-	// TODO 8: Switch buffers so we actually render
-	SDL_RenderPresent(App->render->renderer);
-	
+	SDL_RenderPresent(renderer);
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -69,31 +78,36 @@ bool ModuleRender::CleanUp()
 	LOG("Destroying renderer");
 
 	//Destroy window
-	if(renderer != nullptr)
+	if (renderer != NULL)
+	{
 		SDL_DestroyRenderer(renderer);
+	}
 
 	return true;
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed)
 {
 	bool ret = true;
 	SDL_Rect rect;
-	rect.x = x;
-	rect.y = App->render->yscroll;
+	rect.x = (int)(camera.x * speed) + x * SCREEN_SIZE;
+	rect.y = (int)(camera.y * speed) + y * SCREEN_SIZE;
 
-	if(section != nullptr)
+	if (section != NULL)
 	{
 		rect.w = section->w;
 		rect.h = section->h;
 	}
 	else
 	{
-		SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
+		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
 	}
 
-	if(SDL_RenderCopy(renderer, texture, section, &rect) != 0)
+	rect.w *= SCREEN_SIZE;
+	rect.h *= SCREEN_SIZE;
+
+	if (SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 		ret = false;
@@ -101,3 +115,4 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 
 	return ret;
 }
+z
